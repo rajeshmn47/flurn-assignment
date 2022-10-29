@@ -22,10 +22,25 @@ import { createleave } from "./actions/leaveActions";
 const locales = ["ko", "fr", "de"];
 
 function CreateLeave() {
+  const { loading, isCreated } = useSelector((state) => state.leave);
+  console.log(isCreated, "iscreated");
   const dispatch = useDispatch();
   const [tovalue, setToValue] = useState(dayjs());
   const [fromvalue, setFromValue] = useState(dayjs());
   const [reason, setReason] = useState("");
+  const [notification, setNotification] = useState({
+    open: false,
+    message: "",
+  });
+
+  useEffect(() => {
+    if (isCreated) {
+      setNotification({ open: true, message: "created successfully" });
+      setTimeout(() => {
+        setNotification({ open: false, message: "" });
+      }, 2000);
+    }
+  }, [dispatch, isCreated]);
 
   const handleToChange = (newValue) => {
     setToValue(newValue);
@@ -120,6 +135,9 @@ function CreateLeave() {
             </Grid>
           </Grid>
         </form>
+        <h3 className="notification">
+          {notification.open && notification.message}
+        </h3>
       </div>
     </>
   );

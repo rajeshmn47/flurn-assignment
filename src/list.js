@@ -21,6 +21,7 @@ import { createleave } from "./actions/leaveActions";
 import { getleaves } from "./actions/leaveActions";
 import EditOutlineIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useNavigate } from "react-router-dom";
 import EditPopup from "./editpopup";
 import DeletePopup from "./deletepopup";
 
@@ -28,7 +29,12 @@ const locales = ["ko", "fr", "de"];
 
 function List() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { loading, leavelist, isCreated } = useSelector((state) => state.leave);
+  const { user, isAuthenticated, error } = useSelector(
+    (state) => state.user
+  );
+  
   console.log(leavelist, "leave");
   const today = new Date();
   const todayDate = today.getFullYear() - today.getMonth() - today.getDate();
@@ -42,6 +48,13 @@ function List() {
   useEffect(() => {
     dispatch(getleaves());
   }, [dispatch, isCreated]);
+
+  useEffect(()=>{
+  if(!isAuthenticated){
+    console.log(isAuthenticated)
+  navigate('/')
+  }
+  },[dispatch,isAuthenticated])
 
   const handleToChange = (newValue) => {
     setToValue(newValue);

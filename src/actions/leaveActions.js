@@ -40,10 +40,8 @@ export const createleave = (myform) => async (dispatch) => {
       },
     });
     console.log(data);
-    if (data.user) {
-      console.log("true rajesh");
-      dispatch({ type: CREATE_LEAVE_SUCCESS, payload: "data" });
-    }
+    console.log("true rajesh");
+    dispatch({ type: CREATE_LEAVE_SUCCESS, payload: "data" });
   } catch (error) {
     console.log(error.response, "asdfgh");
     dispatch({
@@ -128,10 +126,9 @@ export const deleteleave = (id) => async (dispatch) => {
       },
     });
     console.log(data);
-    if (data.user) {
-      console.log("true rajesh");
-      dispatch({ type: CREATE_LEAVE_SUCCESS, payload: "data" });
-    }
+    dispatch(getleaves());
+    console.log("true rajesh");
+    dispatch({ type: CREATE_LEAVE_SUCCESS, payload: "data" });
   } catch (error) {
     console.log(error.response, "asdfgh");
     dispatch({

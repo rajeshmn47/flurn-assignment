@@ -78,7 +78,9 @@ export const loadUser = () => async (dispatch) => {
       },
     });
     console.log(data);
+    if(data.email){
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -98,7 +100,8 @@ export const logout = () => async (dispatch) => {
     },
   });
   localStorage.removeItem("access_token");
-  dispatch({ type: LOGOUT_SUCCESS });
+  await dispatch(loadUser())
+  dispatch({ type: LOGOUT_SUCCESS, payload: data });
 };
 
 export const setShowBlogSearch = (payload) => ({

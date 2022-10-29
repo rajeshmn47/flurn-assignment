@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "./actions/userAction";
+import { loadUser, logout } from "./actions/userAction";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SideBar() {
@@ -11,10 +12,15 @@ function SideBar() {
   const { user, isAuthenticated, loading, error } = useSelector(
     (state) => state.user
   );
-
+  console.log(isAuthenticated,'isa')
+  useEffect(()=>{
+  if(!isAuthenticated){
+    console.log(isAuthenticated)
+  router('/')
+  }
+  },[dispatch,isAuthenticated])
   const handlelogout = () => {
     dispatch(logout());
-    router("/");
   };
   console.log(location.pathname, "path");
   return (

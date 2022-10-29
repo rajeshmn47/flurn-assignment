@@ -23,12 +23,19 @@ import { useNavigate } from "react-router-dom";
 
 const locales = ["ko", "fr", "de"];
 
-function Login() {
+function CreateAccount() {
+  const { loading, isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState(dayjs());
   const [email, setEmail] = useState(dayjs());
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/list");
+    }
+  }, [dispatch, isAuthenticated]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,4 +129,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default CreateAccount;

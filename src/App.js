@@ -39,7 +39,7 @@ function App() {
   const { user, isAuthenticated, loading, error } = useSelector(
     (state) => state.user
   );
-  console.log(user, "user");
+  console.log(user, "user",isAuthenticated);
   const [tovalue, setToValue] = useState(dayjs());
   const [fromvalue, setFromValue] = useState(dayjs());
   const [reason, setReason] = useState("");
@@ -78,7 +78,7 @@ function App() {
       <BrowserRouter>
         {user?.email && <SideBar />}
         <Routes>
-          {user?.email && <Route path="/list" element={<List />} />}
+         <Route path="/list" element={<List />} />
           <Route path="/createaccount" element={<SignUp />} />
           <Route path="/" element={<Login />} />
           <Route path="/create" element={<CreateLeave />} />
