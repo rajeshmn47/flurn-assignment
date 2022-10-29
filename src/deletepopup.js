@@ -9,7 +9,7 @@ import "./App.css";
 import { deleteleave, getleaves } from "./actions/leaveActions";
 // or
 
-export const Popup = ({ deletepopupOpen, setDeletepopupOpen, deleteItem }) => {
+export const Popup = ({ deletepopupOpen, setDeletepopupOpen, deleteItem , setNotification }) => {
   const dispatch = useDispatch();
   const handleClose = () => {
     setDeletepopupOpen(!deletepopupOpen);
@@ -19,6 +19,7 @@ export const Popup = ({ deletepopupOpen, setDeletepopupOpen, deleteItem }) => {
     dispatch(deleteleave(deleteItem.id));
     dispatch(getleaves());
     setDeletepopupOpen(!deletepopupOpen);
+    setNotification({open:true,message:'successfully deleted'})
   };
   return (
     <>

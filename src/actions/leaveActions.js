@@ -116,6 +116,7 @@ export const deleteleave = (id) => async (dispatch) => {
     const access_token =
       localStorage.getItem("access_token") &&
       localStorage.getItem("access_token");
+      dispatch({ type: CREATE_LEAVE_REQUEST, payload: "data" });
     const data = await axios({
       method: "delete",
       url: `https://dkgicggupnrxldwvkeft.supabase.co/rest/v1/leaves?id=eq.${id}`,

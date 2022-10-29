@@ -45,6 +45,10 @@ function List() {
   const [editItem, setEditItem] = useState();
   const [deletepopupOpen, setDeletepopupOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState();
+  const [notification, setNotification] = useState({
+    open: false,
+    message: "",
+  });
   useEffect(() => {
     dispatch(getleaves());
   }, [dispatch, isCreated]);
@@ -55,6 +59,13 @@ function List() {
   navigate('/')
   }
   },[dispatch,isAuthenticated])
+  useEffect(() => {
+    if (notification.open) {
+      setTimeout(() => {
+        setNotification({ open: false, message: "" });
+      }, 2000);
+    }
+  }, [dispatch, notification]);
 
   const handleToChange = (newValue) => {
     setToValue(newValue);
@@ -141,6 +152,7 @@ function List() {
           </tbody>
         </table>
       </div>
+      <h3>{notification.open&&notification.message}</h3>
       <div className="tablecontainer two">
         <h3>Past Leaves</h3>
         <table>
@@ -185,7 +197,9 @@ function List() {
           deletepopupOpen={deletepopupOpen}
           setDeletepopupOpen={setDeletepopupOpen}
           deleteItem={deleteItem}
+          setNotification={setNotification}
         />
+     
       </div>
     </>
   );
