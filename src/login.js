@@ -25,8 +25,8 @@ function Login() {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState(dayjs());
-  const [email, setEmail] = useState(dayjs());
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
   useEffect(() => {
     if (user?.email) {

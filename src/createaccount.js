@@ -27,8 +27,8 @@ function CreateAccount() {
   const { loading, isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState(dayjs());
-  const [email, setEmail] = useState(dayjs());
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
@@ -80,6 +80,7 @@ function CreateAccount() {
               <Grid item lg={12}>
                 <TextField
                   placeholder="name"
+                  autoComplete="false"
                   sx={{ width: "100%" }}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
