@@ -152,7 +152,7 @@ function List() {
           </tbody>
         </table>
       </div>
-      <h3>{notification.open&&notification.message}</h3>
+      {notification.open&&<h3 className="notification">{notification.message}</h3>}
       <div className="tablecontainer two">
         <h3>Past Leaves</h3>
         <table>
@@ -192,6 +192,7 @@ function List() {
           editpopupOpen={editpopupOpen}
           setEditpopupOpen={setEditpopupOpen}
           editItem={editItem}
+          setNotification={setNotification}
         />
         <DeletePopup
           deletepopupOpen={deletepopupOpen}

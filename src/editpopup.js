@@ -26,7 +26,7 @@ import { editleave, getleaves } from "./actions/leaveActions";
 import { getElRoot } from "fullcalendar";
 // or
 
-export const Popup = ({ editpopupOpen, setEditpopupOpen, editItem }) => {
+export const Popup = ({ editpopupOpen, setEditpopupOpen, editItem ,setNotification }) => {
   console.log(editpopupOpen, editItem, setEditpopupOpen, "edititem");
   const dispatch = useDispatch();
   const [tovalue, setToValue] = useState(dayjs());
@@ -56,6 +56,7 @@ export const Popup = ({ editpopupOpen, setEditpopupOpen, editItem }) => {
     setReason("");
     dispatch(editleave(myform));
     dispatch(getleaves());
+    setNotification({open:true,message:'edited successfully'})
     setEditpopupOpen(false);
   };
   return (

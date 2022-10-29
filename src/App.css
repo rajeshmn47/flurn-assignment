@@ -192,3 +192,20 @@ table {
   justify-content: center;
   align-items: center;
 }
+.notification{
+  background-color: forestgreen;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 10px;
+  font-size: 16px;
+  width:400px;
+  margin-left: 860px;
+  margin-bottom: 10px;
+}
+.createnotification{
+  background-color: forestgreen;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 10px;
+  font-size: 16px;
+}

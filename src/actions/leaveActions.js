@@ -26,6 +26,7 @@ const headers = {
 export const createleave = (myform) => async (dispatch) => {
   try {
     console.log(myform, "createleave");
+    dispatch({ type: CREATE_LEAVE_REQUEST, payload: "data" });
     const access_token =
       localStorage.getItem("access_token") &&
       localStorage.getItem("access_token");

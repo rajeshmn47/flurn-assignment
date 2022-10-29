@@ -133,11 +133,15 @@ function CreateLeave() {
                 Submit
               </Button>
             </Grid>
+            
+            <Grid item lg={12}>
+            {notification.open &&<h3 className='createnotification'>{notification.message}</h3>}
+            </Grid>
           </Grid>
         </form>
-        <h3 className="notification">
-          {notification.open && notification.message}
-        </h3>
+      
+   
+        
       </div>
     </>
   );
